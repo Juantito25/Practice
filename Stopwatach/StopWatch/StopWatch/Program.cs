@@ -17,43 +17,41 @@ namespace StopWatch
 
             do
             {
-                question = 100;
+                question = 0;
 
-                Console.WriteLine("Please hit '1' to start. Once the timer has started you can hit 2 to stop. If you are done, please hit 0.");
+                Console.WriteLine("Please hit '1' to start.");
+                Console.WriteLine("Once the timer has started you can hit 2 to stop.");
+                Console.WriteLine("If you are done, please hit 0.");
+                Console.WriteLine("");
+
                 var input = Console.ReadLine();
+
+                Console.WriteLine("");
 
                 try
                 {
                     question = Convert.ToInt32(input);
 
                 }
-                catch (FormatException)
+                catch (Exception)
                 {
                     Console.WriteLine("That is not an acceptable answer");
-                    
+                    question = 3;
+                   
                 }
-                catch (ArgumentNullException)
-                {
-                    Console.WriteLine("this is not an acceptable asnwer");
-                }
-                
-
-                
-                    switch (question)
+                switch (question)
                     {
                         case 1:
                             stopwatch.StartTimer();
                             break;
                         case 2:
+                            Console.WriteLine();
                             stopwatch.StopTimer();
+                            Console.WriteLine();
                             break;
                     case 0:
                         break;
 
-
-                        default:
-                            Console.WriteLine("This is not a valid Answer");
-                            break;
                     }
                 } while (question != 0);
         }
